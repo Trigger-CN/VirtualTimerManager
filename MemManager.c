@@ -26,7 +26,7 @@ static uint8_t memAllocTabel[AllocTabel_Size];
   */
 void MM_MemPoolInit()
 {
-    for (int i = 0; i < 1024; i++)
+    for (int i = 0; i < Pool_Size; i++)
     {
         memPool[i] = 0;
         if(memPool[i])
@@ -60,7 +60,7 @@ void MM_MemPoolInit()
 static int16_t MM_SpaceSearch(size_t s)
 {
     size_t spaceSize = 0;
-    for (int i = 0; i < 1024; i++)
+    for (int i = 0; i < Pool_Size; i++)
     {
         uint8_t tmp = memAllocTabel[i / 8];
         if (!(tmp & (0x80 >> (i % 8))))
