@@ -27,7 +27,7 @@ VirtualTimerManager.c 和 VTM.h 为VirtualTimerManager的本体文件，MenManag
 
 ### 示例
 ```c 
-TimerNode_TypeDef *personalTiemrList[8];
+TimerNode_TypeDef *personalTiemrList[8];//用来储存注册函数返回的句柄，下面三行也是这样
 FuncNode_TypeDef *timer1Func[8];
 FuncNode_TypeDef *timer2Func[8];
 FuncNode_TypeDef *timer3Func[8];
@@ -55,7 +55,8 @@ timer3Func[0] = VTM_FuncNodeRegister(personalTiemrList[2], led7_func, NULL);
 
 personalTiemrList[3] = VTM_TimerRegister(100, 4, true, led8_func, NULL);
 personalTiemrList[4] = VTM_TimerRegister(1000,1,true,FuncEnable,NULL);
-VTM_Enable(true);
-VTM_FuncNodeDel(personalTiemrList[0],timer1Func[1]);
-VTM_FuncNodeEnable(timer1Func[2],false);
+
+VTM_Enable(true);//使能管理器
+VTM_FuncNodeDel(personalTiemrList[0],timer1Func[1]);//删除一个服务函数
+VTM_FuncNodeEnable(timer1Func[2],false);//失能一个服务函数
 
