@@ -1,6 +1,8 @@
 # VirtualTimerManager
 VirtualTimerManager虚拟定时器管理器
 
+用于软件模拟定时器，来弥补硬件资源不足，比如硬件定时器通道不够。
+
 完全基于链表实现，可动态访问虚拟定时器和服务函数。
 
 使用SysTick中断作为软件定时器的基准中断
