@@ -48,6 +48,7 @@ uint8_t VTM_TimerNodeDel(TimerNode_TypeDef *Node);
 uint8_t VTM_FuncNodeEnable(FuncNode_TypeDef *FuncNode,bool en);
 uint8_t VTM_FuncNodeDel(TimerNode_TypeDef *timerNode,FuncNode_TypeDef *FuncNode);
 
+
 #ifdef __cplusplus
 }// extern "C"
 #endif
