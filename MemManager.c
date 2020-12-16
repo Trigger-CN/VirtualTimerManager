@@ -146,4 +146,19 @@ uint8_t MM_Set(void *Block, int val, size_t s)
     return 1;
 }
 
-
+/**
+  * @brief  Occupation 查看占用情况
+  * @param  无
+  * @retval (int)已占用字节数
+  */
+int MM_Occupation()
+{
+    int count=0;
+    for (int i = 0; i < Pool_Size; i++)
+    {
+        uint8_t tmp = memAllocTabel[i / 8];
+        if ((tmp & (0x80 >> (i % 8))))
+            count++;
+    }
+    return count;
+}
