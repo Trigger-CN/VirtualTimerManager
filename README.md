@@ -34,9 +34,14 @@ FuncNode_TypeDef *timer3Func[8];
 VTM_TimerManagerInit();//管理器的初始化函数
 
 personalTiemrList[0] = VTM_TimerRegister(50, 1, true, NULL, NULL);
-//50为时间间隔，1为优先级(越大优先级越高)，true为定时器使能，第一个NULL为服务函数指针(如果不为NULL，则认定该定时器只有一个服务函数，不会拥有服务函数列表)，第二个NULL为服务函数参数
+//注册一个虚拟定时器
+/*50为时间间隔，1为优先级(越大优先级越高)，true为定时器使能，
+第一个NULL为服务函数指针(如果不为NULL，则认定该定时器只有一个服务函数，不会拥有服务函数列表)，第二个NULL为服务函数参数*/
+
 timer1Func[0] = VTM_FuncNodeRegister(personalTiemrList[0], led1_func, NULL);
+//为虚拟定时器注册一个服务函数
 //personalTiemrList[0]为目标虚拟定时器的指针,led1_func为服务函数指针，NULL为服务函数的参数
+
 timer1Func[1] = VTM_FuncNodeRegister(personalTiemrList[0], led2_func, NULL);
 timer1Func[2] = VTM_FuncNodeRegister(personalTiemrList[0], led3_func, NULL);
 
