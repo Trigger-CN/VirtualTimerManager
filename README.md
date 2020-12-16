@@ -19,3 +19,36 @@ VirtualTimerManager虚拟定时器管理器
       删除：删除指定的服务函数
       
 6  定时器实例和服务函数都可被使能和失能
+
+### 本管理器搭配了一个轻量化内存管理器
+VirtualTimerManager.c 和 VTM.h 为VirtualTimerManager的本体文件，MenManager.c 和 MM.H 为内存管理器的文件。 
+
+### 示例
+```c 
+TimerNode_TypeDef *personalTiemrList[8];
+FuncNode_TypeDef *timer1Func[8];
+FuncNode_TypeDef *timer2Func[8];
+FuncNode_TypeDef *timer3Func[8];
+VTM_TimerManagerInit();//管理器的初始化函数
+
+personalTiemrList[0] = VTM_TimerRegister(50, 1, true, NULL, NULL);
+//50为时间间隔，1为优先级(越大优先级越高)，true为定时器使能，第一个NULL为服务函数指针(如果不为NULL，则认定该定时器只有一个服务函数，不会拥有服务函数列表)，第二个NULL为服务函数参数
+timer1Func[0] = VTM_FuncNodeRegister(personalTiemrList[0], led1_func, NULL);
+//personalTiemrList[0]为目标虚拟定时器的指针,led1_func为服务函数指针，NULL为服务函数的参数
+timer1Func[1] = VTM_FuncNodeRegister(personalTiemrList[0], led2_func, NULL);
+timer1Func[2] = VTM_FuncNodeRegister(personalTiemrList[0], led3_func, NULL);
+
+personalTiemrList[1] = VTM_TimerRegister(100, 2, true, NULL, NULL);
+timer2Func[0] = VTM_FuncNodeRegister(personalTiemrList[1], led4_func, NULL);
+timer2Func[1] = VTM_FuncNodeRegister(personalTiemrList[1], led5_func, NULL);
+timer2Func[2] = VTM_FuncNodeRegister(personalTiemrList[1], led6_func, NULL);
+
+personalTiemrList[2] = VTM_TimerRegister(200, 3, true, NULL, NULL);
+timer3Func[0] = VTM_FuncNodeRegister(personalTiemrList[2], led7_func, NULL);
+
+personalTiemrList[3] = VTM_TimerRegister(100, 4, true, led8_func, NULL);
+personalTiemrList[4] = VTM_TimerRegister(1000,1,true,FuncEnable,NULL);
+VTM_Enable(true);
+VTM_FuncNodeDel(personalTiemrList[0],timer1Func[1]);
+VTM_FuncNodeEnable(timer1Func[2],false);
+
