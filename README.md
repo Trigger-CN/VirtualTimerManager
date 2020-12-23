@@ -59,4 +59,4 @@ personalTiemrList[4] = VTM_TimerRegister(1000,1,true,FuncEnable,NULL);
 VTM_Enable(true);//使能管理器
 VTM_FuncNodeDel(personalTiemrList[0],timer1Func[1]);//删除一个服务函数
 VTM_FuncNodeEnable(timer1Func[2],false);//失能一个服务函数
-
+```
