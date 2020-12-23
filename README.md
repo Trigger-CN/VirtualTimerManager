@@ -23,6 +23,8 @@ VirtualTimerManager虚拟定时器管理器
 6  定时器实例和服务函数都可被使能和失能
 
 ### 本管理器搭配了一个轻量化内存管理器
+https://github.com/Trigger-CN/MemoryManager
+
 VirtualTimerManager.c 和 VTM.h 为VirtualTimerManager的本体文件，MenManager.c 和 MM.H 为内存管理器的文件。 
 
 ### 示例
