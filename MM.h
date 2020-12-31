@@ -1,8 +1,10 @@
-#ifndef _MM_H
-#define _MM_H
+#ifndef MM_H
+#define MM_H
+
 #ifdef __cplusplus
 extern "C" {
 #endif
+
 #include <stdint.h>
 #include <string.h>
 #include <stdbool.h>
@@ -18,6 +20,6 @@ int MM_Occupation(void);
 }// extern "C"
 #endif
 
-#endif
+#endif //!MM_H
 
 
