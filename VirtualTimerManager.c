@@ -22,13 +22,13 @@ static void FuncList_Load(TimerNode_TypeDef *Node);
 static void FuncList_Sort(void);
 static void FuncList_NodeScan(void);
 
-/*timerList虚拟定时器列表*/
+/*timerList虚拟定时器列表头节点*/
 static TimerNode_TypeDef *timerListHead;
 
-/*funcList定时器函数列表*/
+/*funcList定时器函数列表链表，每一个节点为一个函数列表*/
 static TimerNode_TypeDef *funcList[FuncListSize];
 
-/*fCont定时器函数计数*/
+/*fCont定时器函数timeout计数*/
 static uint8_t fCont = 0;
 
 bool VTMEnable = false;
@@ -83,7 +83,8 @@ TimerNode_TypeDef * VTM_TimerRegister(uint16_t intv, uint8_t prio, bool en, VTM_
     newNode->priority = prio;
     newNode->isEnable = en;
     newNode->func = f;
-    newNode->funcVal = val;
+    newNode->funcVal = val; 
+    newNode->funcListHead = NULL;
     newNode->Next = NULL;
     if(!f)
     {
@@ -192,7 +193,6 @@ void VTM_TimerScan()
     if(timerListHead->Next)
     {
         FuncList_Sort();
-        //FuncList_Scan();
         FuncList_NodeScan();
     }
     OneCycle_Finish();
