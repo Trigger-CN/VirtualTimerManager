@@ -94,8 +94,6 @@ uint16_t MM_GetTableIndex(void* Block)
   */
 void* MM_Alloc(size_t s)
 {
-    printf("MM_Alloc: %d MM_Occupation() = %ld\r\n", s, MM_Occupation());
-
     int spaceIndex = MM_SpaceSearch(s);
     if (spaceIndex == -1)
     {
