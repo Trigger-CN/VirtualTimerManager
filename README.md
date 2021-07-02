@@ -40,7 +40,8 @@ VTM_TimerManagerInit();//管理器的初始化函数
 personalTiemrList[0] = VTM_TimerRegister(50, 1, true, NULL, NULL);
 //注册一个虚拟定时器
 /*50为时间间隔，1为优先级(越大优先级越高)，true为定时器使能，
-第一个NULL为服务函数指针(如果不为NULL，则认定该定时器只有一个服务函数，不会拥有服务函数列表)，第二个NULL为服务函数参数*/
+第一个NULL为服务函数指针(如果不为NULL，则认定该定时器只有一个服务函数，
+不会拥有服务函数列表)，第二个NULL为服务函数参数*/
 
 timer1Func[0] = VTM_FuncNodeRegister(personalTiemrList[0], led1_func, NULL);
 //为虚拟定时器注册一个服务函数
